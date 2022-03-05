@@ -1,5 +1,5 @@
 {
-  "name": "virtual-background",
+  "name": "@spoxyz/virtual-background",
   "version": "0.1.0",
   "description": "Demo on adding virtual background to a live video stream in the browser",
   "homepage": "https://volcomix.github.io/virtual-background",
@@ -34,6 +34,7 @@
   },
   "scripts": {
     "install": "tsc",
+    "publish": "tsc && publish",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "build:tflite": "yarn build:tflite:image && docker run --rm -it -v $PWD:/workspace -w /workspace tflite",
