@@ -1,6 +1,6 @@
 {
   "name": "@spotxyz/virtual-background",
-  "version": "0.1.0",
+  "version": "0.1.0-custom1",
   "description": "Demo on adding virtual background to a live video stream in the browser",
   "homepage": "https://github.com/spotxyz/virtual-background",
   "repository": "https://github.com/spotxyz/virtual-background.git",
@@ -33,7 +33,6 @@
   },
   "scripts": {
     "install": "tsc",
-    "publish": "tsc && publish",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "build:tflite": "yarn build:tflite:image && docker run --rm -it -v $PWD:/workspace -w /workspace tflite",
