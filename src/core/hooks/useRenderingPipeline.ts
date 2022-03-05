@@ -12,7 +12,7 @@ function useRenderingPipeline(
   sourcePlayback: SourcePlayback,
   backgroundConfig: BackgroundConfig,
   segmentationConfig: SegmentationConfig,
-  bodyPix: BodyPix,
+  bodyPix: BodyPix | null,
   tflite: TFLite
 ) {
   const [pipeline, setPipeline] = useState<RenderingPipeline | null>(null)
@@ -50,7 +50,7 @@ function useRenderingPipeline(
             backgroundConfig,
             segmentationConfig,
             canvasRef.current,
-            bodyPix,
+            bodyPix!,
             tflite,
             addFrameEvent
           )
@@ -90,7 +90,7 @@ function useRenderingPipeline(
     }
 
     render()
-    console.log(
+    console.debug(
       'Animation started:',
       sourcePlayback,
       backgroundConfig,
@@ -103,7 +103,7 @@ function useRenderingPipeline(
       shouldRender = false
       cancelAnimationFrame(renderRequestId)
       newPipeline.cleanUp()
-      console.log(
+      console.debug(
         'Animation stopped:',
         sourcePlayback,
         backgroundConfig,

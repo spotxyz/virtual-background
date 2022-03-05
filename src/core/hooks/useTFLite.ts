@@ -69,38 +69,37 @@ function useTFLite(segmentationConfig: SegmentationConfig) {
         segmentationConfig.model,
         segmentationConfig.inputResolution
       )
-      console.log('Loading tflite model:', modelFileName)
 
       const modelResponse = await fetch(
-        `${process.env.PUBLIC_URL}/models/${modelFileName}.tflite`
+        `${process.env.PUBLIC_URL}/virtual-background/models/${modelFileName}.tflite`
       )
       const model = await modelResponse.arrayBuffer()
-      console.log('Model buffer size:', model.byteLength)
+      console.debug('Model buffer size:', model.byteLength)
 
       const modelBufferOffset = newSelectedTFLite._getModelBufferMemoryOffset()
-      console.log('Model buffer memory offset:', modelBufferOffset)
-      console.log('Loading model buffer...')
+      console.debug('Model buffer memory offset:', modelBufferOffset)
+      console.debug('Loading model buffer...')
       newSelectedTFLite.HEAPU8.set(new Uint8Array(model), modelBufferOffset)
-      console.log(
+      console.debug(
         '_loadModel result:',
         newSelectedTFLite._loadModel(model.byteLength)
       )
 
-      console.log(
+      console.debug(
         'Input memory offset:',
         newSelectedTFLite._getInputMemoryOffset()
       )
-      console.log('Input height:', newSelectedTFLite._getInputHeight())
-      console.log('Input width:', newSelectedTFLite._getInputWidth())
-      console.log('Input channels:', newSelectedTFLite._getInputChannelCount())
+      console.debug('Input height:', newSelectedTFLite._getInputHeight())
+      console.debug('Input width:', newSelectedTFLite._getInputWidth())
+      console.debug('Input channels:', newSelectedTFLite._getInputChannelCount())
 
-      console.log(
+      console.debug(
         'Output memory offset:',
         newSelectedTFLite._getOutputMemoryOffset()
       )
-      console.log('Output height:', newSelectedTFLite._getOutputHeight())
-      console.log('Output width:', newSelectedTFLite._getOutputWidth())
-      console.log(
+      console.debug('Output height:', newSelectedTFLite._getOutputHeight())
+      console.debug('Output width:', newSelectedTFLite._getOutputWidth())
+      console.debug(
         'Output channels:',
         newSelectedTFLite._getOutputChannelCount()
       )
