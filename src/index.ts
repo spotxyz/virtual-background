@@ -1,6 +1,7 @@
 export * from './core/helpers/segmentationHelper';
 export * from './core/helpers/sourceHelper';
 export * from './core/helpers/backgroundHelper';
+export * from './core//helpers/postProcessingHelper';
 
 export {
 default as useTFLite
