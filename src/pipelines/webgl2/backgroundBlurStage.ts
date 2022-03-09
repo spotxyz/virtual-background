@@ -17,7 +17,8 @@ export function buildBackgroundBlurStage(
   positionBuffer: WebGLBuffer,
   texCoordBuffer: WebGLBuffer,
   personMaskTexture: WebGLTexture,
-  canvas: HTMLCanvasElement
+  canvas: HTMLCanvasElement,
+  blurScale = 0.5
 ): BackgroundBlurStage {
   const blurPass = buildBlurPass(
     gl,
@@ -25,7 +26,8 @@ export function buildBackgroundBlurStage(
     positionBuffer,
     texCoordBuffer,
     personMaskTexture,
-    canvas
+    canvas,
+    blurScale
   )
   const blendPass = buildBlendPass(gl, positionBuffer, texCoordBuffer, canvas)
 
@@ -56,7 +58,8 @@ function buildBlurPass(
   positionBuffer: WebGLBuffer,
   texCoordBuffer: WebGLBuffer,
   personMaskTexture: WebGLTexture,
-  canvas: HTMLCanvasElement
+  canvas: HTMLCanvasElement,
+  scale: number
 ) {
   const fragmentShaderSource = glsl`#version 300 es
 
@@ -95,7 +98,7 @@ function buildBlurPass(
     }
   `
 
-  const scale = 0.5
+  // const scale = 0.5
   const outputWidth = canvas.width * scale
   const outputHeight = canvas.height * scale
   const texelWidth = 1 / outputWidth

@@ -141,7 +141,8 @@ export function buildWebGL2Pipeline(
           positionBuffer,
           texCoordBuffer,
           personMaskTexture,
-          canvas
+          canvas,
+          backgroundConfig.blurScale
         )
       : buildBackgroundImageStage(
           gl,

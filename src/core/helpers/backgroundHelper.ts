@@ -1,6 +1,7 @@
 export type BackgroundConfig = {
   type: 'none' | 'blur' | 'image'
-  url?: string
+  url?: string,
+  blurScale?: number; // 0-1, 0 being max blur
 }
 
 export const backgroundImageUrls = [
