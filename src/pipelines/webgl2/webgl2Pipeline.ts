@@ -19,6 +19,7 @@ import { buildJointBilateralFilterStage } from './jointBilateralFilterStage'
 import { buildLoadSegmentationStage } from './loadSegmentationStage'
 import { buildResizingStage } from './resizingStage'
 import { buildSoftmaxStage } from './softmaxStage'
+import { useMemo } from "react";
 
 export function buildWebGL2Pipeline(
   sourcePlayback: SourcePlayback,
@@ -47,7 +48,7 @@ export function buildWebGL2Pipeline(
     segmentationConfig.inputResolution
   ]
 
-  const gl = canvas.getContext('webgl2')!
+  const gl = useMemo(() => canvas.getContext('webgl2')!, [canvas]);
 
   const vertexShader = compileShader(gl, gl.VERTEX_SHADER, vertexShaderSource)
 
