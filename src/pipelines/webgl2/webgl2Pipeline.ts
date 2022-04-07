@@ -20,9 +20,6 @@ import { buildLoadSegmentationStage } from './loadSegmentationStage'
 import { buildResizingStage } from './resizingStage'
 import { buildSoftmaxStage } from './softmaxStage'
 
-let prevCanvas: HTMLCanvasElement;
-let gl: WebGL2RenderingContext;
-
 export const buildWebGL2Pipeline = (
   sourcePlayback: SourcePlayback,
   backgroundImage: HTMLImageElement | null,
@@ -50,11 +47,7 @@ export const buildWebGL2Pipeline = (
     segmentationConfig.inputResolution
   ]
 
-  // Prevent unnecessary canvas contexts from being created
-  if(canvas !== prevCanvas){
-    gl = canvas.getContext('webgl2')!;
-  }
-  prevCanvas = canvas;
+  const gl = canvas.getContext('webgl2')!;
 
   const vertexShader = compileShader(gl, gl.VERTEX_SHADER, vertexShaderSource)
 
