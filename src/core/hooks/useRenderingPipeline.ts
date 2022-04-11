@@ -7,6 +7,7 @@ import { RenderingPipeline } from '../helpers/renderingPipelineHelper'
 import { SegmentationConfig } from '../helpers/segmentationHelper'
 import { SourcePlayback } from '../helpers/sourceHelper'
 import { TFLite } from './useTFLite'
+import { cancelFrame, requestFrame } from "../helpers/frameHelper";
 
 function useRenderingPipeline(
   sourcePlayback: SourcePlayback,
@@ -62,7 +63,7 @@ function useRenderingPipeline(
       beginFrame()
       await newPipeline.render()
       endFrame()
-      renderRequestId = requestAnimationFrame(render)
+      renderRequestId = requestFrame(render)
     }
 
     function beginFrame() {
@@ -100,8 +101,8 @@ function useRenderingPipeline(
     setPipeline(newPipeline)
 
     return () => {
-      shouldRender = false
-      cancelAnimationFrame(renderRequestId)
+      shouldRender = false;
+      cancelFrame(renderRequestId);
       newPipeline.cleanUp()
       console.debug(
         'Animation stopped:',

@@ -7,6 +7,8 @@
  * to be installed as well.
  * https://marketplace.visualstudio.com/items?itemName=slevesque.shader
  */
+import { requestFrame } from "../../core/helpers/frameHelper";
+
 export const glsl = String.raw
 
 export function createPiplelineStageProgram(
@@ -125,18 +127,18 @@ async function getBufferSubDataAsync(
 
 function clientWaitAsync(gl: WebGL2RenderingContext, sync: WebGLSync) {
   return new Promise<number>((resolve) => {
-    function test() {
+    const test = () => {
       const res = gl.clientWaitSync(sync, 0, 0)
       if (res === gl.WAIT_FAILED) {
         resolve(res)
         return
       }
       if (res === gl.TIMEOUT_EXPIRED) {
-        requestAnimationFrame(test)
+        requestFrame(test);
         return
       }
       resolve(res)
     }
-    requestAnimationFrame(test)
+    requestFrame(test);
   })
 }
