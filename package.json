@@ -4,53 +4,16 @@
   "description": "Demo on adding virtual background to a live video stream in the browser",
   "homepage": "https://github.com/spotxyz/virtual-background",
   "repository": "https://github.com/spotxyz/virtual-background.git",
-  "author": "Volcomix <Volcomix@users.noreply.github.com>",
-  "main": "dist/index.js",
   "license": "MIT",
-  "dependencies": {
-    "@material-ui/core": "^4.12.3",
-    "@material-ui/icons": "^4.11.2",
-    "@material-ui/lab": "^4.0.0-alpha.60",
-    "@tensorflow-models/body-pix": "^2.0.5",
-    "@tensorflow/tfjs": "^3.13.0",
-    "@testing-library/jest-dom": "^5.16.2",
-    "@testing-library/react": "^12.1.3",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/emscripten": "^1.39.6",
-    "@types/jest": "^27.4.0",
-    "@types/node": "^17.0.18",
-    "@types/react": "^17.0.39",
-    "@types/react-dom": "^17.0.11",
-    "clsx": "^1.1.1",
-    "gh-pages": "^3.2.3",
-    "react-scripts": "5.0.0",
-    "typescript": "^4.5.5",
-    "web-vitals": "^2.1.4"
-  },
-  "peerDependencies": {
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0"
-  },
+  "author": "Volcomix <Volcomix@users.noreply.github.com>",
+  "main": "dist/libraryIndex.js",
   "scripts": {
-    "install": "tsc",
-    "start": "react-scripts start",
     "build": "react-scripts build",
     "build:tflite": "yarn build:tflite:image && docker run --rm -it -v $PWD:/workspace -w /workspace tflite",
     "build:tflite:image": "docker build -t tflite tflite",
-    "test": "react-scripts test",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "eject": "react-scripts eject"
-  },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "eject": "react-scripts eject",
+    "start": "react-scripts start",
+    "test": "react-scripts test"
   },
   "browserslist": {
     "production": [
@@ -63,5 +26,41 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "dependencies": {
+    "@tensorflow-models/body-pix": "^2.0.5",
+    "@tensorflow/tfjs": "^3.13.0",
+    "@types/emscripten": "^1.39.6",
+    "@types/react": "^16",
+    "@types/react-dom": "^16"
+  },
+  "devDependencies": {
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.60",
+    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/react": "^12.1.3",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.4.0",
+    "clsx": "^1.1.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-scripts": "5.0.0",
+    "typescript": "^4.6.4"
+  },
+  "peerDependencies": {
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
+  },
+  "packageManager": "yarn@3.2.0"
 }
