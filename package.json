@@ -13,8 +13,12 @@
     "build:tflite:image": "docker build -t tflite tflite",
     "eject": "react-scripts eject",
     "start": "react-scripts start",
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "prepack": "tsc"
   },
+  "files": [
+    "dist"
+  ],
   "browserslist": {
     "production": [
       ">0.2%",
